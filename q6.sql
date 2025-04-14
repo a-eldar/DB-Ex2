@@ -4,10 +4,10 @@
 SELECT DISTINCT name
 FROM members NATURAL JOIN memberInKnesset
 WHERE NOT EXISTS (
-    (SELECT number FROM members NATURAL JOIN memberInKnesset M
+    (SELECT number FROM (members NATURAL JOIN memberInKnesset) M
     WHERE party = 'Mapai')
     EXCEPT
-    (SELECT number FROM members NATURAL JOIN memberInKnesset DBG
+    (SELECT number FROM (members NATURAL JOIN memberInKnesset) DBG
     WHERE name = 'David Ben-Gurion' AND party = 'Mapai' AND M.number = DBG.number)
 )
 ORDER BY name;
