@@ -10,4 +10,5 @@ FROM (
      WHERE num1 != num2)
 ) AS AllInOneKnesset
 NATURAL JOIN
-  (SELECT * FROM members WHERE birthPlace = 'Jerusalem') AS JerusalemMembers;
+  (SELECT * FROM members WHERE birthPlace = 'Jerusalem') AS JerusalemMembers
+ORDER BY name;
