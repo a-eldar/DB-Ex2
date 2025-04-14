@@ -1,4 +1,4 @@
-SELECT number, name
+SELECT DISTINCT number, name
 FROM 
 (
     SELECT uid, number
