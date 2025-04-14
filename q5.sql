@@ -1,4 +1,4 @@
-SELECT name
+SELECT DISTINCT name
 FROM (
     (SELECT uid FROM memberInKnesset)
     EXCEPT
