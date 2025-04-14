@@ -7,7 +7,7 @@ EXCEPT
      (SELECT number AS num1, uid FROM membersInKnesset) AS K1
      NATURAL JOIN
      (SELECT number AS num2, uid FROM membersInKnesset) AS K2
-   WHERE num1 != num2) AS InTwoKnessets
+   WHERE num1 != num2)
 
 NATURAL JOIN
-  (SELECT * FROM members WHERE birthPlace = 'Jerusalem') AS JMems;
+  (SELECT * FROM members WHERE birthPlace = 'Jerusalem');
