@@ -3,11 +3,12 @@
 -- \pi_(name) (Mapai \div BenGurion)
 SELECT DISTINCT name
 FROM members NATURAL JOIN memberInKnesset R
-WHERE NOT EXISTS (
-    (SELECT number FROM (members NATURAL JOIN memberInKnesset) M
-    WHERE party = 'Mapai')
+WHERE party = 'Mapai'
+  AND NOT EXISTS (
+    (SELECT number FROM (members NATURAL JOIN memberInKnesset)
+     WHERE name = 'David Ben-Gurion' AND party = 'Mapai')
     EXCEPT
-    (SELECT number FROM (members NATURAL JOIN memberInKnesset) DBG
-    WHERE name = 'David Ben-Gurion' AND party = 'Mapai' AND R.number = DBG.number)
+    (SELECT number FROM (members NATURAL JOIN memberInKnesset)
+     WHERE party = 'Mapai' AND uid = R.uid)
 )
 ORDER BY name;
